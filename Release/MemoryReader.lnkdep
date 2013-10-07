@@ -1,0 +1,11 @@
+Release\MemoryReader.build.lnkarg
+C:\D\dmd2\windows\bin\sc.ini
+Release\MemoryReader.obj
+C:\D\dmd2\windows\bin\..\lib\user32.lib
+C:\D\dmd2\windows\bin\..\lib\kernel32.lib
+C:\D\dmd2\windows\bin\..\lib\psapi.lib
+C:\D\dmd2\windows\bin\..\lib\phobos.lib
+C:\D\dmd2\windows\bin\..\lib\snn.lib
+C:\D\dmd2\windows\bin\..\lib\advapi32.lib
+C:\D\dmd2\windows\bin\..\lib\shell32.lib
+resources\resource.RES

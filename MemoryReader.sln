@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{002A2DE9-8BB6-484D-9802-7E4AD4084715}") = "MemoryReader", "MemoryReader.visualdproj", "{9381A44B-98F5-4378-80B3-8DC6724D614C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		unittest|Win32 = unittest|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9381A44B-98F5-4378-80B3-8DC6724D614C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9381A44B-98F5-4378-80B3-8DC6724D614C}.Debug|Win32.Build.0 = Debug|Win32
+		{9381A44B-98F5-4378-80B3-8DC6724D614C}.Release|Win32.ActiveCfg = Release|Win32
+		{9381A44B-98F5-4378-80B3-8DC6724D614C}.Release|Win32.Build.0 = Release|Win32
+		{9381A44B-98F5-4378-80B3-8DC6724D614C}.unittest|Win32.ActiveCfg = unittest|Win32
+		{9381A44B-98F5-4378-80B3-8DC6724D614C}.unittest|Win32.Build.0 = unittest|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

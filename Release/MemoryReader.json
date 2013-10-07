@@ -1,0 +1,3693 @@
+[
+ {
+  "name" : "rhodeus.memory",
+  "kind" : "module",
+  "file" : "rhodeus\\memory\\mem.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 3,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 4,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.vararg",
+    "kind" : "import",
+    "line" : 5,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 6,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.range",
+    "kind" : "import",
+    "line" : 7,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.traits",
+    "kind" : "import",
+    "line" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "MEM",
+    "kind" : "class",
+    "line" : 10,
+    "members" : [
+     {
+      "name" : "hProcess",
+      "kind" : "variable",
+      "protection" : "private",
+      "line" : 11,
+      "deco" : "Pv",
+      "originalType" : "HANDLE",
+      "offset" : 8
+     },
+     {
+      "name" : "this",
+      "kind" : "constructor",
+      "line" : 12,
+      "deco" : "FAyaZC7rhodeus6memory3MEM",
+      "originalType" : "(string name)",
+      "parameters" : [
+       {
+        "name" : "name",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 16
+     },
+     {
+      "name" : "~this",
+      "kind" : "destructor",
+      "line" : 17,
+      "deco" : "FZv",
+      "endline" : 19
+     },
+     {
+      "name" : "cachebase",
+      "kind" : "variable",
+      "line" : 21,
+      "deco" : "Pv",
+      "init" : "cast(void*)4294967295u",
+      "offset" : 12
+     },
+     {
+      "name" : "baseAddress",
+      "kind" : "function",
+      "line" : 23,
+      "deco" : "FZPv",
+      "endline" : 35
+     },
+     {
+      "name" : "GetPID",
+      "kind" : "function",
+      "line" : 37,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FAyaZi",
+      "parameters" : [
+       {
+        "name" : "name",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 52
+     },
+     {
+      "kind" : "template",
+      "line" : 54,
+      "name" : "pointerRead",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "pointerRead",
+        "kind" : "function",
+        "line" : 54,
+        "type" : "T(int static_offset, int[] offsets...)",
+        "parameters" : [
+         {
+          "name" : "static_offset",
+          "deco" : "i"
+         },
+         {
+          "name" : "offsets",
+          "type" : "int[]"
+         }
+        ],
+        "endline" : 66
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 67,
+      "name" : "pointerWrite",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "pointerWrite",
+        "kind" : "function",
+        "line" : 67,
+        "type" : "bool(T value, int static_offset, int[] offsets...)",
+        "parameters" : [
+         {
+          "name" : "value",
+          "type" : "T"
+         },
+         {
+          "name" : "static_offset",
+          "deco" : "i"
+         },
+         {
+          "name" : "offsets",
+          "type" : "int[]"
+         }
+        ],
+        "endline" : 74
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 76,
+      "name" : "read",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "read",
+        "kind" : "function",
+        "line" : 76,
+        "type" : "T(int adr)",
+        "parameters" : [
+         {
+          "name" : "adr",
+          "deco" : "i"
+         }
+        ],
+        "endline" : 80
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 82,
+      "name" : "read",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "read",
+        "kind" : "function",
+        "line" : 82,
+        "type" : "T(int adr)",
+        "parameters" : [
+         {
+          "name" : "adr",
+          "deco" : "i"
+         }
+        ],
+        "endline" : 86
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 88,
+      "name" : "write",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "write",
+        "kind" : "function",
+        "line" : 88,
+        "type" : "bool(int adr, T value)",
+        "parameters" : [
+         {
+          "name" : "adr",
+          "deco" : "i"
+         },
+         {
+          "name" : "value",
+          "type" : "T"
+         }
+        ],
+        "endline" : 90
+       }
+      ]
+     },
+     {
+      "kind" : "template",
+      "line" : 91,
+      "name" : "write",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "write",
+        "kind" : "function",
+        "line" : 91,
+        "type" : "bool(int adr, T value)",
+        "parameters" : [
+         {
+          "name" : "adr",
+          "deco" : "i"
+         },
+         {
+          "name" : "value",
+          "type" : "T"
+         }
+        ],
+        "endline" : 93
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "IMAGE_IMPORT_DESCRIPTOR",
+    "kind" : "struct",
+    "line" : 95,
+    "members" : [
+     {
+      "name" : "DUMMYUNIONNAME",
+      "kind" : "variable",
+      "line" : 96,
+      "deco" : "i",
+      "offset" : 0
+     },
+     {
+      "name" : "TimeDateStamp",
+      "kind" : "variable",
+      "line" : 97,
+      "deco" : "i",
+      "offset" : 4
+     },
+     {
+      "name" : "ForwarderChain",
+      "kind" : "variable",
+      "line" : 98,
+      "deco" : "i",
+      "offset" : 8
+     },
+     {
+      "name" : "Name",
+      "kind" : "variable",
+      "line" : 99,
+      "deco" : "i",
+      "offset" : 12
+     },
+     {
+      "name" : "FirstThunk",
+      "kind" : "variable",
+      "line" : 100,
+      "deco" : "i",
+      "offset" : 16
+     }
+    ]
+   },
+   {
+    "name" : "_ChangeHookApi",
+    "kind" : "function",
+    "line" : 102,
+    "deco" : "FPvPvZv",
+    "parameters" : [
+     {
+      "name" : "itd",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "newProc",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 109
+   },
+   {
+    "name" : "_AddHookApi",
+    "kind" : "function",
+    "line" : 110,
+    "storageClass" : [
+     "auto"
+    ],
+    "deco" : "FAyaAyaPvZPv",
+    "originalType" : "(string moduleName, string functionName, void* newProcAddress)",
+    "parameters" : [
+     {
+      "name" : "moduleName",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "functionName",
+      "deco" : "Aya"
+     },
+     {
+      "name" : "newProcAddress",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 144
+   }
+  ]
+ },
+ {
+  "name" : "rhodeus.windows.advapi32",
+  "kind" : "module",
+  "file" : "rhodeus\\windows\\advapi32.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "ANYSIZE_ARRAY",
+    "kind" : "variable",
+    "line" : 11,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "SE_PRIVILEGE_ENABLED_BY_DEFAULT",
+    "kind" : "variable",
+    "line" : 12,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "SE_PRIVILEGE_ENABLED",
+    "kind" : "variable",
+    "line" : 13,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "2"
+   },
+   {
+    "name" : "SE_PRIVILEGE_REMOVED",
+    "kind" : "variable",
+    "line" : 14,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "4"
+   },
+   {
+    "name" : "SE_PRIVILEGE_USED_FOR_ACCESS",
+    "kind" : "variable",
+    "line" : 15,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "k",
+    "init" : "2147483648u"
+   },
+   {
+    "name" : "LookupPrivilegeValueA",
+    "kind" : "function",
+    "line" : 18,
+    "deco" : "WPxaPxaPS7rhodeus7windows8advapi324LUIDZi",
+    "originalType" : "extern (Windows) BOOL(LPCTSTR lpSystemName, LPCTSTR lpName, LUID* lpLuid)",
+    "parameters" : [
+     {
+      "name" : "lpSystemName",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "lpName",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "lpLuid",
+      "deco" : "PS7rhodeus7windows8advapi324LUID"
+     }
+    ]
+   },
+   {
+    "name" : "AdjustTokenPrivileges",
+    "kind" : "function",
+    "line" : 19,
+    "deco" : "WPviPS7rhodeus7windows8advapi3216TOKEN_PRIVILEGESkPS7rhodeus7windows8advapi3216TOKEN_PRIVILEGESPkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE TokenHandle, BOOL DisableAllPrivileges, TOKEN_PRIVILEGES* NewState, DWORD BufferLength, TOKEN_PRIVILEGES* PreviousState, PDWORD ReturnLength)",
+    "parameters" : [
+     {
+      "name" : "TokenHandle",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "DisableAllPrivileges",
+      "deco" : "i"
+     },
+     {
+      "name" : "NewState",
+      "deco" : "PS7rhodeus7windows8advapi3216TOKEN_PRIVILEGES"
+     },
+     {
+      "name" : "BufferLength",
+      "deco" : "k"
+     },
+     {
+      "name" : "PreviousState",
+      "deco" : "PS7rhodeus7windows8advapi3216TOKEN_PRIVILEGES"
+     },
+     {
+      "name" : "ReturnLength",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "OpenProcessToken",
+    "kind" : "function",
+    "line" : 23,
+    "deco" : "WPvkPPvZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE ProcessHandle, DWORD DesiredAccess, PHANDLE TokenHandle)",
+    "parameters" : [
+     {
+      "name" : "ProcessHandle",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "DesiredAccess",
+      "deco" : "k"
+     },
+     {
+      "name" : "TokenHandle",
+      "deco" : "PPv"
+     }
+    ]
+   },
+   {
+    "name" : "TOKEN_ASSIGN_PRIMARY",
+    "kind" : "variable",
+    "line" : 28,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "TOKEN_DUPLICATE",
+    "kind" : "variable",
+    "line" : 29,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "2"
+   },
+   {
+    "name" : "TOKEN_IMPERSONATE",
+    "kind" : "variable",
+    "line" : 30,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "4"
+   },
+   {
+    "name" : "TOKEN_QUERY",
+    "kind" : "variable",
+    "line" : 31,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "8"
+   },
+   {
+    "name" : "TOKEN_QUERY_SOURCE",
+    "kind" : "variable",
+    "line" : 32,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "16"
+   },
+   {
+    "name" : "TOKEN_ADJUST_PRIVILEGES",
+    "kind" : "variable",
+    "line" : 33,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "32"
+   },
+   {
+    "name" : "TOKEN_ADJUST_GROUPS",
+    "kind" : "variable",
+    "line" : 34,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "64"
+   },
+   {
+    "name" : "TOKEN_ADJUST_DEFAULT",
+    "kind" : "variable",
+    "line" : 35,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "128"
+   },
+   {
+    "name" : "TOKEN_ADJUST_SESSIONID",
+    "kind" : "variable",
+    "line" : 36,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "256"
+   },
+   {
+    "name" : "TOKEN_READ",
+    "kind" : "variable",
+    "line" : 37,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "k",
+    "init" : "131080u"
+   },
+   {
+    "name" : "TOKEN_ALL_ACCESS",
+    "kind" : "variable",
+    "line" : 41,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "k",
+    "init" : "983551u"
+   },
+   {
+    "name" : "LUID",
+    "kind" : "struct",
+    "line" : 44,
+    "members" : [
+     {
+      "name" : "LowPart",
+      "kind" : "variable",
+      "line" : 45,
+      "deco" : "k",
+      "offset" : 0
+     },
+     {
+      "name" : "HighPart",
+      "kind" : "variable",
+      "line" : 46,
+      "deco" : "i",
+      "offset" : 4
+     }
+    ]
+   },
+   {
+    "name" : "LUID_AND_ATTRIBUTES",
+    "kind" : "struct",
+    "line" : 49,
+    "members" : [
+     {
+      "name" : "Luid",
+      "kind" : "variable",
+      "line" : 50,
+      "deco" : "S7rhodeus7windows8advapi324LUID",
+      "offset" : 0
+     },
+     {
+      "name" : "Attributes",
+      "kind" : "variable",
+      "line" : 51,
+      "deco" : "k",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "TOKEN_PRIVILEGES",
+    "kind" : "struct",
+    "line" : 54,
+    "members" : [
+     {
+      "name" : "PrivilegeCount",
+      "kind" : "variable",
+      "line" : 55,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 0
+     },
+     {
+      "name" : "Privileges",
+      "kind" : "variable",
+      "line" : 56,
+      "deco" : "G1S7rhodeus7windows8advapi3219LUID_AND_ATTRIBUTES",
+      "originalType" : "LUID_AND_ATTRIBUTES[ANYSIZE_ARRAY]",
+      "offset" : 4
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "rhodeus.windows.d",
+  "kind" : "module",
+  "file" : "rhodeus\\windows\\d.d",
+  "members" : [
+   {
+    "name" : "rhodeus.c",
+    "kind" : "import",
+    "line" : 11
+   },
+   {
+    "name" : "std.c.windows.windows",
+    "kind" : "import",
+    "line" : 12
+   },
+   {
+    "name" : "core.sys.windows.dll",
+    "kind" : "import",
+    "line" : 13
+   },
+   {
+    "name" : "rhodeus.windows.kernel32",
+    "kind" : "import",
+    "line" : 14
+   },
+   {
+    "name" : "rhodeus.windows.psapi",
+    "kind" : "import",
+    "line" : 15
+   },
+   {
+    "name" : "rhodeus.windows.dbghelp",
+    "kind" : "import",
+    "line" : 16
+   },
+   {
+    "name" : "rhodeus.windows.user32",
+    "kind" : "import",
+    "line" : 17
+   },
+   {
+    "name" : "rhodeus.windows.ntdll",
+    "kind" : "import",
+    "line" : 18
+   },
+   {
+    "name" : "rhodeus.windows.advapi32",
+    "kind" : "import",
+    "line" : 19
+   }
+  ]
+ },
+ {
+  "name" : "rhodeus.windows.dbghelp",
+  "kind" : "module",
+  "file" : "rhodeus\\windows\\dbghelp.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_EXPORT",
+    "kind" : "variable",
+    "line" : 11,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_IMPORT",
+    "kind" : "variable",
+    "line" : 12,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_RESOURCE",
+    "kind" : "variable",
+    "line" : 13,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "2"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_EXCEPTION",
+    "kind" : "variable",
+    "line" : 14,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "3"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_SECURITY",
+    "kind" : "variable",
+    "line" : 15,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "4"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_BASERELOC",
+    "kind" : "variable",
+    "line" : 16,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "5"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_DEBUG",
+    "kind" : "variable",
+    "line" : 17,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "6"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_COPYRIGHT",
+    "kind" : "variable",
+    "line" : 18,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "7"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_ARCHITECTURE",
+    "kind" : "variable",
+    "line" : 19,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "7"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_GLOBALPTR",
+    "kind" : "variable",
+    "line" : 20,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "8"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_TLS",
+    "kind" : "variable",
+    "line" : 21,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "9"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_LOAD_CONFIG",
+    "kind" : "variable",
+    "line" : 22,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "10"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT",
+    "kind" : "variable",
+    "line" : 23,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "11"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_IAT",
+    "kind" : "variable",
+    "line" : 24,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "12"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT",
+    "kind" : "variable",
+    "line" : 25,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "13"
+   },
+   {
+    "name" : "IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR",
+    "kind" : "variable",
+    "line" : 26,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "14"
+   },
+   {
+    "name" : "ImageDirectoryEntryToDataForm",
+    "kind" : "alias",
+    "line" : 29,
+    "deco" : "PWPvitPkZPv"
+   }
+  ]
+ },
+ {
+  "name" : "rhodeus.windows.kernel32",
+  "kind" : "module",
+  "file" : "rhodeus\\windows\\kernel32.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 10,
+    "protection" : "private"
+   },
+   {
+    "name" : "PROCESS_HEAP_ENTRY_BUSY",
+    "kind" : "variable",
+    "line" : 13,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "4"
+   },
+   {
+    "name" : "PROCESS_HEAP_ENTRY_MOVEABLE",
+    "kind" : "variable",
+    "line" : 14,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "16"
+   },
+   {
+    "name" : "PROCESS_HEAP_ENTRY_DDESHARE",
+    "kind" : "variable",
+    "line" : 15,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "32"
+   },
+   {
+    "name" : "PROCESS_HEAP_UNCOMMITTED_RANGE",
+    "kind" : "variable",
+    "line" : 16,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "2"
+   },
+   {
+    "name" : "PROCESS_HEAP_REGION",
+    "kind" : "variable",
+    "line" : 17,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "1"
+   },
+   {
+    "name" : "PROCESS_HEAP_ENTRY",
+    "kind" : "struct",
+    "line" : 18,
+    "members" : [
+     {
+      "name" : "lpData",
+      "kind" : "variable",
+      "line" : 19,
+      "deco" : "Pv",
+      "originalType" : "PVOID",
+      "offset" : 0
+     },
+     {
+      "name" : "cbData",
+      "kind" : "variable",
+      "line" : 20,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 4
+     },
+     {
+      "name" : "cbOverhead",
+      "kind" : "variable",
+      "line" : 21,
+      "deco" : "h",
+      "originalType" : "BYTE",
+      "offset" : 8
+     },
+     {
+      "name" : "iRegionIndex",
+      "kind" : "variable",
+      "line" : 22,
+      "deco" : "h",
+      "originalType" : "BYTE",
+      "offset" : 9
+     },
+     {
+      "name" : "wFlags",
+      "kind" : "variable",
+      "line" : 23,
+      "deco" : "t",
+      "originalType" : "WORD",
+      "offset" : 10
+     },
+     {
+      "name" : "hMem",
+      "kind" : "variable",
+      "line" : 26,
+      "deco" : "Pv",
+      "originalType" : "HANDLE",
+      "offset" : 12
+     },
+     {
+      "name" : "dwReserved",
+      "kind" : "variable",
+      "line" : 27,
+      "deco" : "G3k",
+      "originalType" : "DWORD[3]",
+      "offset" : 16
+     },
+     {
+      "name" : "dwCommittedSize",
+      "kind" : "variable",
+      "line" : 30,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 12
+     },
+     {
+      "name" : "dwUnCommittedSize",
+      "kind" : "variable",
+      "line" : 31,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 16
+     },
+     {
+      "name" : "lpFirstBlock",
+      "kind" : "variable",
+      "line" : 32,
+      "deco" : "Pv",
+      "originalType" : "LPVOID",
+      "offset" : 20
+     },
+     {
+      "name" : "lpLastBlock",
+      "kind" : "variable",
+      "line" : 33,
+      "deco" : "Pv",
+      "originalType" : "LPVOID",
+      "offset" : 24
+     }
+    ]
+   },
+   {
+    "name" : "HeapCreate",
+    "kind" : "function",
+    "line" : 40,
+    "deco" : "WkkkZPv",
+    "originalType" : "extern (Windows) HANDLE(DWORD flOptions, SIZE_T dwInitialSize, SIZE_T dwMaximumSize)",
+    "parameters" : [
+     {
+      "name" : "flOptions",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwInitialSize",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwMaximumSize",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "HeapLock",
+    "kind" : "function",
+    "line" : 41,
+    "deco" : "WPvZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hHeap)",
+    "parameters" : [
+     {
+      "name" : "hHeap",
+      "deco" : "Pv"
+     }
+    ]
+   },
+   {
+    "name" : "HeapUnlock",
+    "kind" : "function",
+    "line" : 42,
+    "deco" : "WPvZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hHeap)",
+    "parameters" : [
+     {
+      "name" : "hHeap",
+      "deco" : "Pv"
+     }
+    ]
+   },
+   {
+    "name" : "HeapDestroy",
+    "kind" : "function",
+    "line" : 43,
+    "deco" : "WPvZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hHeap)",
+    "parameters" : [
+     {
+      "name" : "hHeap",
+      "deco" : "Pv"
+     }
+    ]
+   },
+   {
+    "name" : "HeapWalk",
+    "kind" : "function",
+    "line" : 45,
+    "deco" : "WPvPS7rhodeus7windows8kernel3218PROCESS_HEAP_ENTRYZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hHeap, PROCESS_HEAP_ENTRY* lpEntry)",
+    "parameters" : [
+     {
+      "name" : "hHeap",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpEntry",
+      "deco" : "PS7rhodeus7windows8kernel3218PROCESS_HEAP_ENTRY"
+     }
+    ]
+   },
+   {
+    "name" : "HeapAlloc",
+    "kind" : "function",
+    "line" : 47,
+    "deco" : "WPvkkZPv",
+    "originalType" : "extern (Windows) LPVOID(HANDLE hHeap, DWORD dwFlags, SIZE_T dwBytes)",
+    "parameters" : [
+     {
+      "name" : "hHeap",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dwFlags",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwBytes",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "HeapFree",
+    "kind" : "function",
+    "line" : 48,
+    "deco" : "WPvkPvZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hHeap, DWORD dwFlags, LPVOID lpMem)",
+    "parameters" : [
+     {
+      "name" : "hHeap",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "dwFlags",
+      "deco" : "k"
+     },
+     {
+      "name" : "lpMem",
+      "deco" : "Pv"
+     }
+    ]
+   },
+   {
+    "name" : "GetProcessHeap",
+    "kind" : "function",
+    "line" : 49,
+    "deco" : "WZPv",
+    "originalType" : "extern (Windows) HANDLE()"
+   },
+   {
+    "name" : "GetProcessHeaps",
+    "kind" : "function",
+    "line" : 50,
+    "deco" : "WkPPvZk",
+    "originalType" : "extern (Windows) DWORD(DWORD NumberOfHeaps, PHANDLE ProcessHeaps)",
+    "parameters" : [
+     {
+      "name" : "NumberOfHeaps",
+      "deco" : "k"
+     },
+     {
+      "name" : "ProcessHeaps",
+      "deco" : "PPv"
+     }
+    ]
+   },
+   {
+    "name" : "OpenFileMappingA",
+    "kind" : "function",
+    "line" : 51,
+    "deco" : "WkiPxaZPv",
+    "originalType" : "extern (Windows) HANDLE(DWORD dwDesiredAccess, BOOL bInheritHandle, LPCTSTR lpName)",
+    "parameters" : [
+     {
+      "name" : "dwDesiredAccess",
+      "deco" : "k"
+     },
+     {
+      "name" : "bInheritHandle",
+      "deco" : "i"
+     },
+     {
+      "name" : "lpName",
+      "deco" : "Pxa"
+     }
+    ]
+   },
+   {
+    "name" : "OpenProcess",
+    "kind" : "function",
+    "line" : 52,
+    "deco" : "WkikZPv",
+    "originalType" : "extern (Windows) HANDLE(uint dwDesiredAccess, BOOL bInheritHandle, uint dwProcessId)",
+    "parameters" : [
+     {
+      "name" : "dwDesiredAccess",
+      "deco" : "k"
+     },
+     {
+      "name" : "bInheritHandle",
+      "deco" : "i"
+     },
+     {
+      "name" : "dwProcessId",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "Process32First",
+    "kind" : "function",
+    "line" : 53,
+    "deco" : "WPvPS7rhodeus7windows8kernel3214PROCESSENTRY32Zi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hSnapshot, PROCESSENTRY32* lppe)",
+    "parameters" : [
+     {
+      "name" : "hSnapshot",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lppe",
+      "deco" : "PS7rhodeus7windows8kernel3214PROCESSENTRY32"
+     }
+    ]
+   },
+   {
+    "name" : "Process32Next",
+    "kind" : "function",
+    "line" : 54,
+    "deco" : "WPvPS7rhodeus7windows8kernel3214PROCESSENTRY32Zi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hSnapshot, PROCESSENTRY32* lppe)",
+    "parameters" : [
+     {
+      "name" : "hSnapshot",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lppe",
+      "deco" : "PS7rhodeus7windows8kernel3214PROCESSENTRY32"
+     }
+    ]
+   },
+   {
+    "name" : "Thread32First",
+    "kind" : "function",
+    "line" : 55,
+    "deco" : "WPvPS7rhodeus7windows8kernel3213THREADENTRY32Zi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hSnapshot, THREADENTRY32* lpte)",
+    "parameters" : [
+     {
+      "name" : "hSnapshot",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpte",
+      "deco" : "PS7rhodeus7windows8kernel3213THREADENTRY32"
+     }
+    ]
+   },
+   {
+    "name" : "Thread32Next",
+    "kind" : "function",
+    "line" : 56,
+    "deco" : "WPvPS7rhodeus7windows8kernel3213THREADENTRY32Zi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hSnapshot, THREADENTRY32* lpte)",
+    "parameters" : [
+     {
+      "name" : "hSnapshot",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpte",
+      "deco" : "PS7rhodeus7windows8kernel3213THREADENTRY32"
+     }
+    ]
+   },
+   {
+    "name" : "CreateToolhelp32Snapshot",
+    "kind" : "function",
+    "line" : 57,
+    "deco" : "WkkZPv",
+    "originalType" : "extern (Windows) HANDLE(uint dwFlags, uint th32ProcessID)",
+    "parameters" : [
+     {
+      "name" : "dwFlags",
+      "deco" : "k"
+     },
+     {
+      "name" : "th32ProcessID",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "ReadProcessMemory",
+    "kind" : "function",
+    "line" : 58,
+    "deco" : "WPvPxvPvkPkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, LPCVOID lpBaseAddress, LPVOID lpBuffer, SIZE_T nSize, SIZE_T* lpNumberOfBytesRead)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpBaseAddress",
+      "deco" : "Pxv"
+     },
+     {
+      "name" : "lpBuffer",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     },
+     {
+      "name" : "lpNumberOfBytesRead",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "WriteProcessMemory",
+    "kind" : "function",
+    "line" : 59,
+    "deco" : "WPvPxvPvkPkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, LPCVOID lpBaseAddress, LPVOID lpBuffer, SIZE_T nSize, SIZE_T* lpNumberOfBytesWritten)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpBaseAddress",
+      "deco" : "Pxv"
+     },
+     {
+      "name" : "lpBuffer",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     },
+     {
+      "name" : "lpNumberOfBytesWritten",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "THREADENTRY32",
+    "kind" : "struct",
+    "line" : 62,
+    "members" : [
+     {
+      "name" : "dwSize",
+      "kind" : "variable",
+      "line" : 63,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 0
+     },
+     {
+      "name" : "cntUsage",
+      "kind" : "variable",
+      "line" : 64,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 4
+     },
+     {
+      "name" : "th32ThreadID",
+      "kind" : "variable",
+      "line" : 65,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 8
+     },
+     {
+      "name" : "th32OwnerProcessID",
+      "kind" : "variable",
+      "line" : 66,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 12
+     },
+     {
+      "name" : "tpBasePri",
+      "kind" : "variable",
+      "line" : 67,
+      "deco" : "i",
+      "originalType" : "LONG",
+      "offset" : 16
+     },
+     {
+      "name" : "tpDeltaPri",
+      "kind" : "variable",
+      "line" : 68,
+      "deco" : "i",
+      "originalType" : "LONG",
+      "offset" : 20
+     },
+     {
+      "name" : "dwFlags",
+      "kind" : "variable",
+      "line" : 69,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 24
+     }
+    ]
+   },
+   {
+    "name" : "PROCESSENTRY32",
+    "kind" : "struct",
+    "line" : 72,
+    "members" : [
+     {
+      "name" : "dwSize",
+      "kind" : "variable",
+      "line" : 73,
+      "deco" : "k",
+      "offset" : 0
+     },
+     {
+      "name" : "cntUsage",
+      "kind" : "variable",
+      "line" : 74,
+      "deco" : "k",
+      "offset" : 4
+     },
+     {
+      "name" : "th32ProcessID",
+      "kind" : "variable",
+      "line" : 75,
+      "deco" : "k",
+      "offset" : 8
+     },
+     {
+      "name" : "th32DefaultHeapID",
+      "kind" : "variable",
+      "line" : 76,
+      "deco" : "k",
+      "offset" : 12
+     },
+     {
+      "name" : "th32ModuleID",
+      "kind" : "variable",
+      "line" : 77,
+      "deco" : "k",
+      "offset" : 16
+     },
+     {
+      "name" : "cntThreads",
+      "kind" : "variable",
+      "line" : 78,
+      "deco" : "k",
+      "offset" : 20
+     },
+     {
+      "name" : "th32ParentProcessID",
+      "kind" : "variable",
+      "line" : 79,
+      "deco" : "k",
+      "offset" : 24
+     },
+     {
+      "name" : "pcPriClassBase",
+      "kind" : "variable",
+      "line" : 80,
+      "deco" : "i",
+      "offset" : 28
+     },
+     {
+      "name" : "dwFlags",
+      "kind" : "variable",
+      "line" : 81,
+      "deco" : "k",
+      "offset" : 32
+     },
+     {
+      "name" : "szExeFile",
+      "kind" : "variable",
+      "line" : 82,
+      "deco" : "G260a",
+      "originalType" : "char[MAX_PATH]",
+      "offset" : 36
+     }
+    ]
+   },
+   {
+    "name" : "CreateToolhelp32SnapshotFlags",
+    "kind" : "class",
+    "line" : 85,
+    "members" : [
+     {
+      "name" : "TH32CS_SNAPHEAPLIST",
+      "kind" : "variable",
+      "line" : 86,
+      "storageClass" : [
+       "const"
+      ],
+      "deco" : "xk",
+      "originalType" : "uint",
+      "init" : "1u"
+     },
+     {
+      "name" : "TH32CS_SNAPPROCESS",
+      "kind" : "variable",
+      "line" : 87,
+      "storageClass" : [
+       "const"
+      ],
+      "deco" : "xk",
+      "originalType" : "uint",
+      "init" : "2u"
+     },
+     {
+      "name" : "TH32CS_SNAPTHREAD",
+      "kind" : "variable",
+      "line" : 88,
+      "storageClass" : [
+       "const"
+      ],
+      "deco" : "xk",
+      "originalType" : "uint",
+      "init" : "4u"
+     },
+     {
+      "name" : "TH32CS_SNAPMODULE",
+      "kind" : "variable",
+      "line" : 89,
+      "storageClass" : [
+       "const"
+      ],
+      "deco" : "xk",
+      "originalType" : "uint",
+      "init" : "8u"
+     },
+     {
+      "name" : "TH32CS_SNAPMODULE32",
+      "kind" : "variable",
+      "line" : 90,
+      "storageClass" : [
+       "const"
+      ],
+      "deco" : "xk",
+      "originalType" : "uint",
+      "init" : "16u"
+     },
+     {
+      "name" : "TH32CS_SNAPALL",
+      "kind" : "variable",
+      "line" : 91,
+      "storageClass" : [
+       "const"
+      ],
+      "deco" : "xk",
+      "originalType" : "uint",
+      "init" : "15u"
+     },
+     {
+      "name" : "TH32CS_INHERIT",
+      "kind" : "variable",
+      "line" : 92,
+      "storageClass" : [
+       "const"
+      ],
+      "deco" : "xk",
+      "originalType" : "uint",
+      "init" : "2147483648u"
+     }
+    ]
+   },
+   {
+    "name" : "THREAD_TERMINATE",
+    "kind" : "enum member",
+    "line" : 97
+   },
+   {
+    "name" : "THREAD_SUSPEND_RESUME",
+    "kind" : "enum member",
+    "line" : 98
+   },
+   {
+    "name" : "THREAD_GET_CONTEXT",
+    "kind" : "enum member",
+    "line" : 99
+   },
+   {
+    "name" : "THREAD_SET_CONTEXT",
+    "kind" : "enum member",
+    "line" : 100
+   },
+   {
+    "name" : "THREAD_QUERY_INFORMATION",
+    "kind" : "enum member",
+    "line" : 101
+   },
+   {
+    "name" : "THREAD_SET_INFORMATION",
+    "kind" : "enum member",
+    "line" : 102
+   },
+   {
+    "name" : "THREAD_SET_THREAD_TOKEN",
+    "kind" : "enum member",
+    "line" : 103
+   },
+   {
+    "name" : "THREAD_IMPERSONATE",
+    "kind" : "enum member",
+    "line" : 104
+   },
+   {
+    "name" : "THREAD_DIRECT_IMPERSONATION",
+    "kind" : "enum member",
+    "line" : 105
+   },
+   {
+    "name" : "THREAD_SET_LIMITED_INFORMATION",
+    "kind" : "enum member",
+    "line" : 107
+   },
+   {
+    "name" : "THREAD_QUERY_LIMITED_INFORMATION",
+    "kind" : "enum member",
+    "line" : 108
+   },
+   {
+    "name" : "THREAD_ALL_ACCESS",
+    "kind" : "enum member",
+    "line" : 110
+   },
+   {
+    "name" : "PROCESS_TERMINATE",
+    "kind" : "enum member",
+    "line" : 113
+   },
+   {
+    "name" : "PROCESS_CREATE_THREAD",
+    "kind" : "enum member",
+    "line" : 114
+   },
+   {
+    "name" : "PROCESS_SET_SESSIONID",
+    "kind" : "enum member",
+    "line" : 115
+   },
+   {
+    "name" : "PROCESS_VM_OPERATION",
+    "kind" : "enum member",
+    "line" : 116
+   },
+   {
+    "name" : "PROCESS_VM_READ",
+    "kind" : "enum member",
+    "line" : 117
+   },
+   {
+    "name" : "PROCESS_VM_WRITE",
+    "kind" : "enum member",
+    "line" : 118
+   },
+   {
+    "name" : "PROCESS_DUP_HANDLE",
+    "kind" : "enum member",
+    "line" : 119
+   },
+   {
+    "name" : "PROCESS_CREATE_PROCESS",
+    "kind" : "enum member",
+    "line" : 120
+   },
+   {
+    "name" : "PROCESS_SET_QUOTA",
+    "kind" : "enum member",
+    "line" : 121
+   },
+   {
+    "name" : "PROCESS_SET_INFORMATION",
+    "kind" : "enum member",
+    "line" : 122
+   },
+   {
+    "name" : "PROCESS_QUERY_INFORMATION",
+    "kind" : "enum member",
+    "line" : 123
+   },
+   {
+    "name" : "PROCESS_ALL_ACCESS",
+    "kind" : "enum member",
+    "line" : 124
+   },
+   {
+    "name" : "__unittestL129_1",
+    "kind" : "function",
+    "line" : 129,
+    "endline" : 217
+   },
+   {
+    "name" : "__unittestL217_2",
+    "kind" : "function",
+    "line" : 217,
+    "endline" : 287
+   }
+  ]
+ },
+ {
+  "name" : "rhodeus.windows.ntdll",
+  "kind" : "module",
+  "file" : "rhodeus\\windows\\Ntdll.d",
+  "members" : []
+ },
+ {
+  "name" : "rhodeus.windows.psapi",
+  "kind" : "module",
+  "file" : "rhodeus\\windows\\psapi.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "EmptyWorkingSet",
+    "kind" : "function",
+    "line" : 21,
+    "deco" : "WPvZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     }
+    ]
+   },
+   {
+    "name" : "EnumDeviceDrivers",
+    "kind" : "function",
+    "line" : 34,
+    "deco" : "WPPvkPkZi",
+    "originalType" : "extern (Windows) BOOL(LPVOID* lpImageBase, DWORD cb, DWORD* lpcbNeeded)",
+    "parameters" : [
+     {
+      "name" : "lpImageBase",
+      "deco" : "PPv"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     },
+     {
+      "name" : "lpcbNeeded",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "__unittestL36_3",
+    "kind" : "function",
+    "line" : 36,
+    "endline" : 58
+   },
+   {
+    "name" : "EnumPageFiles",
+    "kind" : "function",
+    "line" : 58,
+    "deco" : "WWPvPS7rhodeus7windows5psapi26ENUM_PAGE_FILE_INFORMATIONPxaZiPvZi",
+    "originalType" : "extern (Windows) BOOL(typeof(EnumPageFilesProc) pCallbackRoutine, LPVOID lpContext)",
+    "parameters" : [
+     {
+      "name" : "pCallbackRoutine",
+      "deco" : "WPvPS7rhodeus7windows5psapi26ENUM_PAGE_FILE_INFORMATIONPxaZi"
+     },
+     {
+      "name" : "lpContext",
+      "deco" : "Pv"
+     }
+    ]
+   },
+   {
+    "name" : "EnumPageFilesProc",
+    "kind" : "function",
+    "line" : 59,
+    "deco" : "WPvPS7rhodeus7windows5psapi26ENUM_PAGE_FILE_INFORMATIONPxaZi",
+    "originalType" : "extern (Windows) BOOL(LPVOID pContext, ENUM_PAGE_FILE_INFORMATION* pPageFileInfo, LPCTSTR lpFilename)",
+    "parameters" : [
+     {
+      "name" : "pContext",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "pPageFileInfo",
+      "deco" : "PS7rhodeus7windows5psapi26ENUM_PAGE_FILE_INFORMATION"
+     },
+     {
+      "name" : "lpFilename",
+      "deco" : "Pxa"
+     }
+    ]
+   },
+   {
+    "name" : "EnumProcesses",
+    "kind" : "function",
+    "line" : 60,
+    "deco" : "WPkkPkZi",
+    "originalType" : "extern (Windows) BOOL(DWORD* pProcessIds, DWORD cb, DWORD* pBytesReturned)",
+    "parameters" : [
+     {
+      "name" : "pProcessIds",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     },
+     {
+      "name" : "pBytesReturned",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "EnumProcessModules",
+    "kind" : "function",
+    "line" : 61,
+    "deco" : "WPvPPvkPkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, HMODULE* lphModule, DWORD cb, LPDWORD lpcbNeeded)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lphModule",
+      "deco" : "PPv"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     },
+     {
+      "name" : "lpcbNeeded",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "EnumProcessModulesEx",
+    "kind" : "function",
+    "line" : 62,
+    "deco" : "WPvPPvkPkkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, HMODULE* lphModule, DWORD cb, LPDWORD lpcbNeeded, DWORD dwFilterFlag)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lphModule",
+      "deco" : "PPv"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     },
+     {
+      "name" : "lpcbNeeded",
+      "deco" : "Pk"
+     },
+     {
+      "name" : "dwFilterFlag",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetDeviceDriverBaseName",
+    "kind" : "function",
+    "line" : 63,
+    "deco" : "WPvPakZk",
+    "originalType" : "extern (Windows) DWORD(LPVOID ImageBase, LPTSTR lpBaseName, DWORD nSize)",
+    "parameters" : [
+     {
+      "name" : "ImageBase",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpBaseName",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetDeviceDriverFileName",
+    "kind" : "function",
+    "line" : 64,
+    "deco" : "WPvPakZk",
+    "originalType" : "extern (Windows) DWORD(LPVOID ImageBase, LPTSTR lpFilename, DWORD nSize)",
+    "parameters" : [
+     {
+      "name" : "ImageBase",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpFilename",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetMappedFileName",
+    "kind" : "function",
+    "line" : 65,
+    "deco" : "WPvPvPakZk",
+    "originalType" : "extern (Windows) DWORD(HANDLE hProcess, LPVOID lpv, LPTSTR lpFilename, DWORD nSize)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpv",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpFilename",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetModuleBaseName",
+    "kind" : "function",
+    "line" : 66,
+    "deco" : "WPvPvPakZk",
+    "originalType" : "extern (Windows) DWORD(HANDLE hProcess, HMODULE hModule, LPTSTR lpBaseName, DWORD nSize)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "hModule",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpBaseName",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetModuleFileNameEx",
+    "kind" : "function",
+    "line" : 67,
+    "deco" : "WPvPvPakZk",
+    "originalType" : "extern (Windows) DWORD(HANDLE hProcess, HMODULE hModule, LPTSTR lpFilename, DWORD nSize)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "hModule",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpFilename",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetModuleInformation",
+    "kind" : "function",
+    "line" : 68,
+    "deco" : "WPvPvPS7rhodeus7windows5psapi10MODULEINFOkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, HMODULE hModule, MODULEINFO* lpmodinfo, DWORD cb)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "hModule",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpmodinfo",
+      "deco" : "PS7rhodeus7windows5psapi10MODULEINFO"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetPerformanceInfo",
+    "kind" : "function",
+    "line" : 69,
+    "deco" : "WPS7rhodeus7windows5psapi23PERFORMANCE_INFORMATIONkZi",
+    "originalType" : "extern (Windows) BOOL(PERFORMANCE_INFORMATION* pPerformanceInformation, DWORD cb)",
+    "parameters" : [
+     {
+      "name" : "pPerformanceInformation",
+      "deco" : "PS7rhodeus7windows5psapi23PERFORMANCE_INFORMATION"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetProcessImageFileName",
+    "kind" : "function",
+    "line" : 70,
+    "deco" : "WPvPakZk",
+    "originalType" : "extern (Windows) DWORD(HANDLE hProcess, LPTSTR lpImageFileName, DWORD nSize)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpImageFileName",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "nSize",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetProcessMemoryInfo",
+    "kind" : "function",
+    "line" : 71,
+    "deco" : "WPvPS7rhodeus7windows5psapi23PROCESS_MEMORY_COUNTERSkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE Process, PROCESS_MEMORY_COUNTERS* ppsmemCounters, DWORD cb)",
+    "parameters" : [
+     {
+      "name" : "Process",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "ppsmemCounters",
+      "deco" : "PS7rhodeus7windows5psapi23PROCESS_MEMORY_COUNTERS"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetWsChanges",
+    "kind" : "function",
+    "line" : 72,
+    "deco" : "WPvPS7rhodeus7windows5psapi26PSAPI_WS_WATCH_INFORMATIONkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, PSAPI_WS_WATCH_INFORMATION* lpWatchInfo, DWORD cb)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpWatchInfo",
+      "deco" : "PS7rhodeus7windows5psapi26PSAPI_WS_WATCH_INFORMATION"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "GetWsChangesEx",
+    "kind" : "function",
+    "line" : 73,
+    "deco" : "WPvPS7rhodeus7windows5psapi29PSAPI_WS_WATCH_INFORMATION_EXPkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, PSAPI_WS_WATCH_INFORMATION_EX* lpWatchInfoEx, PDWORD cb)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpWatchInfoEx",
+      "deco" : "PS7rhodeus7windows5psapi29PSAPI_WS_WATCH_INFORMATION_EX"
+     },
+     {
+      "name" : "cb",
+      "deco" : "Pk"
+     }
+    ]
+   },
+   {
+    "name" : "InitializeProcessForWsWatch",
+    "kind" : "function",
+    "line" : 74,
+    "deco" : "WPvZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     }
+    ]
+   },
+   {
+    "name" : "QueryWorkingSet",
+    "kind" : "function",
+    "line" : 75,
+    "deco" : "WPvPvkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, PVOID pv, DWORD cb)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "pv",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "QueryWorkingSetEx",
+    "kind" : "function",
+    "line" : 76,
+    "deco" : "WPvPvkZi",
+    "originalType" : "extern (Windows) BOOL(HANDLE hProcess, PVOID pv, DWORD cb)",
+    "parameters" : [
+     {
+      "name" : "hProcess",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "pv",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "cb",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "__unittestL82_4",
+    "kind" : "function",
+    "line" : 82,
+    "endline" : 131
+   },
+   {
+    "name" : "__unittestL131_5",
+    "kind" : "function",
+    "line" : 131,
+    "endline" : 188
+   },
+   {
+    "name" : "__unittestL188_6",
+    "kind" : "function",
+    "line" : 188,
+    "endline" : 264
+   },
+   {
+    "name" : "PROCESS_MEMORY_COUNTERS",
+    "kind" : "struct",
+    "line" : 264,
+    "members" : [
+     {
+      "name" : "cb",
+      "kind" : "variable",
+      "line" : 265,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 0
+     },
+     {
+      "name" : "PageFaultCount",
+      "kind" : "variable",
+      "line" : 266,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 4
+     },
+     {
+      "name" : "PeakWorkingSetSize",
+      "kind" : "variable",
+      "line" : 267,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 8
+     },
+     {
+      "name" : "WorkingSetSize",
+      "kind" : "variable",
+      "line" : 268,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 12
+     },
+     {
+      "name" : "QuotaPeakPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 269,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 16
+     },
+     {
+      "name" : "QuotaPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 270,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 20
+     },
+     {
+      "name" : "QuotaPeakNonPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 271,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 24
+     },
+     {
+      "name" : "QuotaNonPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 272,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 28
+     },
+     {
+      "name" : "PagefileUsage",
+      "kind" : "variable",
+      "line" : 273,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 32
+     },
+     {
+      "name" : "PeakPagefileUsage",
+      "kind" : "variable",
+      "line" : 274,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 36
+     }
+    ]
+   },
+   {
+    "name" : "ProcessAccessFlags",
+    "kind" : "enum",
+    "line" : 276,
+    "baseDeco" : "k",
+    "members" : [
+     {
+      "name" : "All",
+      "kind" : "enum member",
+      "line" : 277
+     },
+     {
+      "name" : "Terminate",
+      "kind" : "enum member",
+      "line" : 278
+     },
+     {
+      "name" : "CreateThread",
+      "kind" : "enum member",
+      "line" : 279
+     },
+     {
+      "name" : "VMOperation",
+      "kind" : "enum member",
+      "line" : 280
+     },
+     {
+      "name" : "VMRead",
+      "kind" : "enum member",
+      "line" : 281
+     },
+     {
+      "name" : "VMWrite",
+      "kind" : "enum member",
+      "line" : 282
+     },
+     {
+      "name" : "DupHandle",
+      "kind" : "enum member",
+      "line" : 283
+     },
+     {
+      "name" : "SetInformation",
+      "kind" : "enum member",
+      "line" : 284
+     },
+     {
+      "name" : "QueryInformation",
+      "kind" : "enum member",
+      "line" : 285
+     },
+     {
+      "name" : "Synchronize",
+      "kind" : "enum member",
+      "line" : 286
+     }
+    ]
+   },
+   {
+    "name" : "ENUM_PAGE_FILE_INFORMATION",
+    "kind" : "struct",
+    "line" : 304,
+    "members" : [
+     {
+      "name" : "cb",
+      "kind" : "variable",
+      "line" : 305,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 0
+     },
+     {
+      "name" : "Reserved",
+      "kind" : "variable",
+      "line" : 306,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 4
+     },
+     {
+      "name" : "TotalSize",
+      "kind" : "variable",
+      "line" : 307,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 8
+     },
+     {
+      "name" : "TotalInUse",
+      "kind" : "variable",
+      "line" : 308,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 12
+     },
+     {
+      "name" : "PeakUsage",
+      "kind" : "variable",
+      "line" : 309,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 16
+     }
+    ]
+   },
+   {
+    "name" : "MODULEINFO",
+    "kind" : "struct",
+    "line" : 327,
+    "members" : [
+     {
+      "name" : "lpBaseOfDll",
+      "kind" : "variable",
+      "line" : 328,
+      "deco" : "Pv",
+      "originalType" : "LPVOID",
+      "offset" : 0
+     },
+     {
+      "name" : "SizeOfImage",
+      "kind" : "variable",
+      "line" : 329,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 4
+     },
+     {
+      "name" : "EntryPoint",
+      "kind" : "variable",
+      "line" : 330,
+      "deco" : "Pv",
+      "originalType" : "LPVOID",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "name" : "PERFORMANCE_INFORMATION",
+    "kind" : "struct",
+    "line" : 365,
+    "members" : [
+     {
+      "name" : "cb",
+      "kind" : "variable",
+      "line" : 366,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 0
+     },
+     {
+      "name" : "CommitTotal",
+      "kind" : "variable",
+      "line" : 367,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 4
+     },
+     {
+      "name" : "CommitLimit",
+      "kind" : "variable",
+      "line" : 368,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 8
+     },
+     {
+      "name" : "CommitPeak",
+      "kind" : "variable",
+      "line" : 369,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 12
+     },
+     {
+      "name" : "PhysicalTotal",
+      "kind" : "variable",
+      "line" : 370,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 16
+     },
+     {
+      "name" : "PhysicalAvailable",
+      "kind" : "variable",
+      "line" : 371,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 20
+     },
+     {
+      "name" : "SystemCache",
+      "kind" : "variable",
+      "line" : 372,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 24
+     },
+     {
+      "name" : "KernelTotal",
+      "kind" : "variable",
+      "line" : 373,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 28
+     },
+     {
+      "name" : "KernelPaged",
+      "kind" : "variable",
+      "line" : 374,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 32
+     },
+     {
+      "name" : "KernelNonpaged",
+      "kind" : "variable",
+      "line" : 375,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 36
+     },
+     {
+      "name" : "PageSize",
+      "kind" : "variable",
+      "line" : 376,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 40
+     },
+     {
+      "name" : "HandleCount",
+      "kind" : "variable",
+      "line" : 377,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 44
+     },
+     {
+      "name" : "ProcessCount",
+      "kind" : "variable",
+      "line" : 378,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 48
+     },
+     {
+      "name" : "ThreadCount",
+      "kind" : "variable",
+      "line" : 379,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 52
+     }
+    ]
+   },
+   {
+    "name" : "PROCESS_MEMORY_COUNTERS_EX",
+    "kind" : "struct",
+    "line" : 409,
+    "members" : [
+     {
+      "name" : "cb",
+      "kind" : "variable",
+      "line" : 410,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 0
+     },
+     {
+      "name" : "PageFaultCount",
+      "kind" : "variable",
+      "line" : 411,
+      "deco" : "k",
+      "originalType" : "DWORD",
+      "offset" : 4
+     },
+     {
+      "name" : "PeakWorkingSetSize",
+      "kind" : "variable",
+      "line" : 412,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 8
+     },
+     {
+      "name" : "WorkingSetSize",
+      "kind" : "variable",
+      "line" : 413,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 12
+     },
+     {
+      "name" : "QuotaPeakPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 414,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 16
+     },
+     {
+      "name" : "QuotaPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 415,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 20
+     },
+     {
+      "name" : "QuotaPeakNonPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 416,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 24
+     },
+     {
+      "name" : "QuotaNonPagedPoolUsage",
+      "kind" : "variable",
+      "line" : 417,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 28
+     },
+     {
+      "name" : "PagefileUsage",
+      "kind" : "variable",
+      "line" : 418,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 32
+     },
+     {
+      "name" : "PeakPagefileUsage",
+      "kind" : "variable",
+      "line" : 419,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 36
+     },
+     {
+      "name" : "PrivateUsage",
+      "kind" : "variable",
+      "line" : 420,
+      "deco" : "k",
+      "originalType" : "SIZE_T",
+      "offset" : 40
+     }
+    ]
+   },
+   {
+    "name" : "PSAPI_WS_WATCH_INFORMATION",
+    "kind" : "struct",
+    "line" : 424,
+    "members" : [
+     {
+      "name" : "FaultingPc",
+      "kind" : "variable",
+      "line" : 425,
+      "deco" : "Pv",
+      "originalType" : "LPVOID",
+      "offset" : 0
+     },
+     {
+      "name" : "FaultingVa",
+      "kind" : "variable",
+      "line" : 426,
+      "deco" : "Pv",
+      "originalType" : "LPVOID",
+      "offset" : 4
+     }
+    ]
+   },
+   {
+    "name" : "PSAPI_WS_WATCH_INFORMATION_EX",
+    "kind" : "struct",
+    "line" : 429,
+    "members" : [
+     {
+      "name" : "BasicInfo",
+      "kind" : "variable",
+      "line" : 430,
+      "deco" : "S7rhodeus7windows5psapi26PSAPI_WS_WATCH_INFORMATION",
+      "offset" : 0
+     },
+     {
+      "name" : "FaultingThreadId",
+      "kind" : "variable",
+      "line" : 431,
+      "deco" : "k",
+      "originalType" : "ULONG_PTR",
+      "offset" : 8
+     },
+     {
+      "name" : "Flags",
+      "kind" : "variable",
+      "line" : 432,
+      "deco" : "k",
+      "originalType" : "ULONG_PTR",
+      "offset" : 12
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "name" : "rhodeus.windows.user32",
+  "kind" : "module",
+  "file" : "rhodeus\\windows\\user32.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 10,
+    "protection" : "private"
+   },
+   {
+    "name" : "FindWindowA",
+    "kind" : "function",
+    "line" : 12,
+    "deco" : "WPxaPxaZPv",
+    "originalType" : "extern (Windows) HWND(LPCTSTR lpClassName, LPCTSTR lpWindowName)",
+    "parameters" : [
+     {
+      "name" : "lpClassName",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "lpWindowName",
+      "deco" : "Pxa"
+     }
+    ]
+   },
+   {
+    "name" : "SetWindowTextA",
+    "kind" : "function",
+    "line" : 13,
+    "deco" : "WPvPxaZi",
+    "originalType" : "extern (Windows) BOOL(HWND hWnd, LPCTSTR lpString)",
+    "parameters" : [
+     {
+      "name" : "hWnd",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpString",
+      "deco" : "Pxa"
+     }
+    ]
+   },
+   {
+    "name" : "GetWindowTextA",
+    "kind" : "function",
+    "line" : 14,
+    "deco" : "WPvPaiZi",
+    "originalType" : "extern (Windows) int(HWND hWnd, LPTSTR lpString, int nMaxCount)",
+    "parameters" : [
+     {
+      "name" : "hWnd",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpString",
+      "deco" : "Pa"
+     },
+     {
+      "name" : "nMaxCount",
+      "deco" : "i"
+     }
+    ]
+   },
+   {
+    "name" : "GetWindowA",
+    "kind" : "function",
+    "line" : 15,
+    "deco" : "WPvkZPv",
+    "originalType" : "extern (Windows) HWND(HWND hWnd, UINT uCmd)",
+    "parameters" : [
+     {
+      "name" : "hWnd",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "uCmd",
+      "deco" : "k"
+     }
+    ]
+   },
+   {
+    "name" : "FindWindowExA",
+    "kind" : "function",
+    "line" : 16,
+    "deco" : "WPvPvPxaPxaZPv",
+    "originalType" : "extern (Windows) HWND(HWND hwndParent, HWND hwndChildAfter, LPCTSTR lpszClass, LPCTSTR lpszWindow)",
+    "parameters" : [
+     {
+      "name" : "hwndParent",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "hwndChildAfter",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpszClass",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "lpszWindow",
+      "deco" : "Pxa"
+     }
+    ]
+   },
+   {
+    "name" : "SendMessageA",
+    "kind" : "function",
+    "line" : 17,
+    "deco" : "WPvkkiZi",
+    "originalType" : "extern (Windows) LRESULT(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)",
+    "parameters" : [
+     {
+      "name" : "hWnd",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "Msg",
+      "deco" : "k"
+     },
+     {
+      "name" : "wParam",
+      "deco" : "k"
+     },
+     {
+      "name" : "lParam",
+      "deco" : "i"
+     }
+    ]
+   },
+   {
+    "name" : "__unittestL20_7",
+    "kind" : "function",
+    "line" : 20,
+    "endline" : 27
+   }
+  ]
+ },
+ {
+  "name" : "rhodeus.c",
+  "kind" : "module",
+  "file" : "rhodeus\\c.d",
+  "members" : [
+   {
+    "name" : "core.stdc.string",
+    "kind" : "import",
+    "line" : 9,
+    "protection" : "private",
+    "selective" : [
+     "strlen"
+    ]
+   },
+   {
+    "name" : "cstr2dstr",
+    "kind" : "function",
+    "line" : 11,
+    "storageClass" : [
+     "auto"
+    ],
+    "deco" : "FPNgaZAya",
+    "originalType" : "(inout(char)* cstr)",
+    "parameters" : [
+     {
+      "name" : "cstr",
+      "deco" : "PNga"
+     }
+    ],
+    "endline" : 13
+   },
+   {
+    "name" : "cstr2dstr",
+    "kind" : "function",
+    "line" : 14,
+    "storageClass" : [
+     "auto"
+    ],
+    "deco" : "FAaZAya",
+    "originalType" : "(char[] cstr)",
+    "parameters" : [
+     {
+      "name" : "cstr",
+      "deco" : "Aa"
+     }
+    ],
+    "endline" : 16
+   }
+  ]
+ },
+ {
+  "name" : "hook",
+  "kind" : "module",
+  "file" : "hook.d",
+  "members" : [
+   {
+    "name" : "rhodeus.memory",
+    "kind" : "import",
+    "line" : 2,
+    "protection" : "private"
+   },
+   {
+    "name" : "hook",
+    "kind" : "function",
+    "line" : 4,
+    "deco" : "FZv",
+    "endline" : 13
+   }
+  ]
+ },
+ {
+  "name" : "main",
+  "kind" : "module",
+  "file" : "main.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 2,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 3,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.memory",
+    "kind" : "import",
+    "line" : 4,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.c.string",
+    "kind" : "import",
+    "line" : 5,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.string",
+    "kind" : "import",
+    "line" : 6,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.conv",
+    "kind" : "import",
+    "line" : 7,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.internal.windows.advapi32",
+    "kind" : "import",
+    "line" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stream",
+    "kind" : "import",
+    "line" : 9,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.c.stdio",
+    "kind" : "import",
+    "line" : 10,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.c.stdlib",
+    "kind" : "import",
+    "line" : 11,
+    "protection" : "private"
+   },
+   {
+    "name" : "ERROR_NOT_ALL_ASSIGNED",
+    "kind" : "variable",
+    "line" : 13,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "1300"
+   },
+   {
+    "name" : "MEMBLOCK",
+    "kind" : "struct",
+    "line" : 16,
+    "members" : [
+     {
+      "name" : "hProc",
+      "kind" : "variable",
+      "line" : 17,
+      "deco" : "Pv",
+      "originalType" : "HANDLE",
+      "offset" : 0
+     },
+     {
+      "name" : "addr",
+      "kind" : "variable",
+      "line" : 18,
+      "deco" : "Pv",
+      "offset" : 4
+     },
+     {
+      "name" : "size",
+      "kind" : "variable",
+      "line" : 19,
+      "deco" : "i",
+      "offset" : 8
+     },
+     {
+      "name" : "buffer",
+      "kind" : "variable",
+      "line" : 20,
+      "deco" : "Pv",
+      "offset" : 12
+     },
+     {
+      "name" : "searchmask",
+      "kind" : "variable",
+      "line" : 21,
+      "deco" : "Pv",
+      "offset" : 16
+     },
+     {
+      "name" : "matches",
+      "kind" : "variable",
+      "line" : 22,
+      "deco" : "i",
+      "offset" : 20
+     },
+     {
+      "name" : "data_size",
+      "kind" : "variable",
+      "line" : 23,
+      "deco" : "i",
+      "offset" : 24
+     }
+    ]
+   },
+   {
+    "name" : "SEARCH_CONDITION",
+    "kind" : "enum",
+    "line" : 26,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "COND_UNCONDITIONAL",
+      "kind" : "enum member",
+      "line" : 27
+     },
+     {
+      "name" : "COND_EQUALS",
+      "kind" : "enum member",
+      "line" : 28
+     },
+     {
+      "name" : "COND_INCREASED",
+      "kind" : "enum member",
+      "line" : 29
+     },
+     {
+      "name" : "COND_DECREASED",
+      "kind" : "enum member",
+      "line" : 30
+     }
+    ]
+   },
+   {
+    "name" : "SetPrivilege",
+    "kind" : "function",
+    "line" : 36,
+    "deco" : "FPvPxaiZb",
+    "originalType" : "bool(HANDLE hToken, LPCTSTR lpszPrivilege, BOOL bEnablePrivilege)",
+    "parameters" : [
+     {
+      "name" : "hToken",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "lpszPrivilege",
+      "deco" : "Pxa"
+     },
+     {
+      "name" : "bEnablePrivilege",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 68
+   },
+   {
+    "name" : "create_memblock",
+    "kind" : "function",
+    "line" : 71,
+    "deco" : "FPvPS4core3sys7windows7windows24MEMORY_BASIC_INFORMATIONiZS4main8MEMBLOCK",
+    "originalType" : "MEMBLOCK(HANDLE hProc, MEMORY_BASIC_INFORMATION* meminfo, int data_size)",
+    "parameters" : [
+     {
+      "name" : "hProc",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "meminfo",
+      "deco" : "PS4core3sys7windows7windows24MEMORY_BASIC_INFORMATION"
+     },
+     {
+      "name" : "data_size",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 90
+   },
+   {
+    "name" : "free_memblock",
+    "kind" : "function",
+    "line" : 92,
+    "deco" : "FPS4main8MEMBLOCKZv",
+    "parameters" : [
+     {
+      "name" : "mb",
+      "deco" : "PS4main8MEMBLOCK"
+     }
+    ],
+    "endline" : 102
+   },
+   {
+    "name" : "REMOVE_FROM_SEARCH",
+    "kind" : "function",
+    "line" : 104,
+    "deco" : "FKS4main8MEMBLOCKkZv",
+    "originalType" : "void(ref MEMBLOCK mb, size_t offset)",
+    "parameters" : [
+     {
+      "name" : "mb",
+      "deco" : "S4main8MEMBLOCK",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "offset",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 106
+   },
+   {
+    "name" : "IS_IN_SEARCH",
+    "kind" : "function",
+    "line" : 108,
+    "deco" : "FS4main8MEMBLOCKkZi",
+    "originalType" : "int(MEMBLOCK mb, size_t offset)",
+    "parameters" : [
+     {
+      "name" : "mb",
+      "deco" : "S4main8MEMBLOCK"
+     },
+     {
+      "name" : "offset",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 110
+   },
+   {
+    "name" : "update_memblock",
+    "kind" : "function",
+    "line" : 112,
+    "deco" : "FKS4main8MEMBLOCKE4main16SEARCH_CONDITIONkZv",
+    "parameters" : [
+     {
+      "name" : "mb",
+      "deco" : "S4main8MEMBLOCK",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "condition",
+      "deco" : "E4main16SEARCH_CONDITION"
+     },
+     {
+      "name" : "val",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 187
+   },
+   {
+    "name" : "WRITABLE",
+    "kind" : "variable",
+    "line" : 190,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "204"
+   },
+   {
+    "name" : "create_scan",
+    "kind" : "function",
+    "line" : 191,
+    "deco" : "FkiZAS4main8MEMBLOCK",
+    "parameters" : [
+     {
+      "name" : "pid",
+      "deco" : "k"
+     },
+     {
+      "name" : "data_size",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 209
+   },
+   {
+    "name" : "update_scan",
+    "kind" : "function",
+    "line" : 212,
+    "deco" : "FKAS4main8MEMBLOCKE4main16SEARCH_CONDITIONkZv",
+    "parameters" : [
+     {
+      "name" : "mb_list",
+      "deco" : "AS4main8MEMBLOCK",
+      "storageClass" : [
+       "ref"
+      ]
+     },
+     {
+      "name" : "condition",
+      "deco" : "E4main16SEARCH_CONDITION"
+     },
+     {
+      "name" : "val",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 216
+   },
+   {
+    "name" : "dump_scan_info",
+    "kind" : "function",
+    "line" : 219,
+    "deco" : "FAS4main8MEMBLOCKZv",
+    "parameters" : [
+     {
+      "name" : "mb_list",
+      "deco" : "AS4main8MEMBLOCK"
+     }
+    ],
+    "endline" : 229
+   },
+   {
+    "name" : "poke",
+    "kind" : "function",
+    "line" : 232,
+    "deco" : "FPvikkZv",
+    "originalType" : "void(HANDLE hProc, int data_size, uint addr, uint val)",
+    "parameters" : [
+     {
+      "name" : "hProc",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "data_size",
+      "deco" : "i"
+     },
+     {
+      "name" : "addr",
+      "deco" : "k"
+     },
+     {
+      "name" : "val",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 236
+   },
+   {
+    "name" : "peek",
+    "kind" : "function",
+    "line" : 238,
+    "deco" : "FPvikZk",
+    "originalType" : "uint(HANDLE hProc, int data_size, uint addr)",
+    "parameters" : [
+     {
+      "name" : "hProc",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "data_size",
+      "deco" : "i"
+     },
+     {
+      "name" : "addr",
+      "deco" : "k"
+     }
+    ],
+    "endline" : 246
+   },
+   {
+    "name" : "print_matches",
+    "kind" : "function",
+    "line" : 249,
+    "deco" : "FKAS4main8MEMBLOCKZv",
+    "parameters" : [
+     {
+      "name" : "mb_list",
+      "deco" : "AS4main8MEMBLOCK",
+      "storageClass" : [
+       "ref"
+      ]
+     }
+    ],
+    "endline" : 258
+   },
+   {
+    "name" : "str2int",
+    "kind" : "function",
+    "line" : 262,
+    "deco" : "FAaZk",
+    "parameters" : [
+     {
+      "name" : "y",
+      "deco" : "Aa"
+     }
+    ],
+    "endline" : 272
+   },
+   {
+    "name" : "str2int",
+    "kind" : "function",
+    "line" : 273,
+    "deco" : "FPaZk",
+    "parameters" : [
+     {
+      "name" : "s",
+      "deco" : "Pa"
+     }
+    ],
+    "endline" : 282
+   },
+   {
+    "name" : "ui_new_scan",
+    "kind" : "function",
+    "line" : 285,
+    "deco" : "FZAS4main8MEMBLOCK",
+    "endline" : 321
+   },
+   {
+    "name" : "ui_poke",
+    "kind" : "function",
+    "line" : 324,
+    "deco" : "FPviZv",
+    "originalType" : "void(HANDLE hProc, int data_size)",
+    "parameters" : [
+     {
+      "name" : "hProc",
+      "deco" : "Pv"
+     },
+     {
+      "name" : "data_size",
+      "deco" : "i"
+     }
+    ],
+    "endline" : 339
+   },
+   {
+    "name" : "ui_run_scan",
+    "kind" : "function",
+    "line" : 342,
+    "deco" : "FZv",
+    "endline" : 386
+   },
+   {
+    "name" : "SE_DEBUG_NAME",
+    "kind" : "variable",
+    "line" : 390,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "Pya",
+    "init" : "\"SeDebugPrivilege\""
+   },
+   {
+    "name" : "main",
+    "kind" : "function",
+    "line" : 392,
+    "deco" : "FZi",
+    "endline" : 407
+   }
+  ]
+ },
+ {
+  "name" : "main2",
+  "kind" : "module",
+  "file" : "main2.d",
+  "members" : [
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 2,
+    "protection" : "private"
+   },
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 4,
+    "protection" : "private"
+   },
+   {
+    "name" : "TH32CS_SNAPTHREAD",
+    "kind" : "variable",
+    "line" : 6,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "4"
+   },
+   {
+    "name" : "core.memory",
+    "kind" : "import",
+    "line" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "GetProcessThreads",
+    "kind" : "function",
+    "line" : 10,
+    "deco" : "FZv",
+    "endline" : 33
+   },
+   {
+    "name" : "NTSTATUS",
+    "kind" : "alias",
+    "line" : 39,
+    "deco" : "i"
+   },
+   {
+    "name" : "pNtQIT",
+    "kind" : "alias",
+    "line" : 41,
+    "deco" : "FPviPvkPkZPi"
+   },
+   {
+    "name" : "STATUS_SUCCESS",
+    "kind" : "variable",
+    "line" : 43,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "0"
+   },
+   {
+    "name" : "ThreadQuerySetWin32StartAddress",
+    "kind" : "variable",
+    "line" : 44,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "9"
+   },
+   {
+    "name" : "NtQueryInformationThreadForm",
+    "kind" : "alias",
+    "line" : 48,
+    "deco" : "PWPviPvkPkZi"
+   },
+   {
+    "name" : "GetThreadStartAddress",
+    "kind" : "function",
+    "line" : 51,
+    "deco" : "FPvZk",
+    "originalType" : "DWORD(HANDLE hThread)",
+    "parameters" : [
+     {
+      "name" : "hThread",
+      "deco" : "Pv"
+     }
+    ],
+    "endline" : 75
+   },
+   {
+    "name" : "main132",
+    "kind" : "function",
+    "line" : 77,
+    "deco" : "FZv",
+    "endline" : 91
+   },
+   {
+    "name" : "BUFFSIZE",
+    "kind" : "variable",
+    "line" : 99,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "1024"
+   },
+   {
+    "name" : "FILE_MAP_START",
+    "kind" : "variable",
+    "line" : 101,
+    "storageClass" : [
+     "enum"
+    ],
+    "deco" : "i",
+    "init" : "138240"
+   },
+   {
+    "name" : "lpcTheFile",
+    "kind" : "variable",
+    "line" : 107,
+    "deco" : "Pa",
+    "init" : "\"fmtest.txt\""
+   },
+   {
+    "name" : "__unittestL108_8",
+    "kind" : "function",
+    "line" : 108,
+    "endline" : 360
+   },
+   {
+    "name" : "__unittestL360_9",
+    "kind" : "function",
+    "line" : 360,
+    "endline" : 410
+   }
+  ]
+ },
+ {
+  "name" : "searcher",
+  "kind" : "module",
+  "file" : "searcher.d",
+  "members" : [
+   {
+    "name" : "rhodeus.windows.d",
+    "kind" : "import",
+    "line" : 3,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 4,
+    "protection" : "private"
+   },
+   {
+    "name" : "Compare",
+    "kind" : "function",
+    "line" : 6,
+    "deco" : "FPxhPxhPNgaZb",
+    "originalType" : "bool(const(BYTE)* pData, const(BYTE)* bMask, inout(char)* szMask)",
+    "parameters" : [
+     {
+      "name" : "pData",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "bMask",
+      "deco" : "Pxh"
+     },
+     {
+      "name" : "szMask",
+      "deco" : "PNga"
+     }
+    ],
+    "endline" : 12
+   },
+   {
+    "name" : "Pattern",
+    "kind" : "function",
+    "line" : 13,
+    "deco" : "FkkPhPNgaZk",
+    "originalType" : "DWORD(DWORD dwAddress, DWORD dwLen, BYTE* bMask, inout(char)* szMask)",
+    "parameters" : [
+     {
+      "name" : "dwAddress",
+      "deco" : "k"
+     },
+     {
+      "name" : "dwLen",
+      "deco" : "k"
+     },
+     {
+      "name" : "bMask",
+      "deco" : "Ph"
+     },
+     {
+      "name" : "szMask",
+      "deco" : "PNga"
+     }
+    ],
+    "endline" : 18
+   },
+   {
+    "name" : "Finished",
+    "kind" : "variable",
+    "line" : 19,
+    "deco" : "b",
+    "init" : "false"
+   },
+   {
+    "name" : "Status",
+    "kind" : "variable",
+    "line" : 20,
+    "deco" : "k",
+    "originalType" : "DWORD"
+   },
+   {
+    "name" : "GetAddresses",
+    "kind" : "function",
+    "line" : 22,
+    "deco" : "FZv",
+    "endline" : 27
+   },
+   {
+    "name" : "app",
+    "kind" : "function",
+    "line" : 29,
+    "deco" : "FZv",
+    "endline" : 40
+   }
+  ]
+ }
+]
